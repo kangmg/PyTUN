@@ -1,3 +1,7 @@
+# pyTUN
+
+Gaussian output 파일로부터 eyring equation의 transmission coefficient를 계산해주는 코드
+
 ## Test data
 
 * 반응 종류 : ClFHP 분자의 configurational inversion
