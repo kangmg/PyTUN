@@ -1,0 +1,40 @@
+# Rxn symmetry number #
+RXN Symmetry Number = auto
+
+
+# Temperatures #
+#   Style #1  :  Temp_1   Temp_2   Temp_3   Temp_4 ...
+#   Style #2  :  start_Temp   end_Temp   interval
+Temperatures list [K] = 300 500 10
+
+
+# Special Temperatures (optional) #
+#   Style #1  :  Stemp_1 Stemp_2 Stemp_3 ... e.g. 273.15 293.15 298.15
+#   Style #2  :  'auto'  will  set  273.15(STP) 293.15(NTP) 298.15(SATP)
+Special Temperatures [K] = auto
+
+
+# consumption time # 
+# ---------------------------------------------------------------------- #
+#   This input is for calculating the decay-time of your reactant.       #
+#   But meaning of decay-time is depends on your reacton system.         #
+#   Plz be aware that 'What is the decay-time for which concentration?   #
+# ---------------------------------------------------------------------- #
+# 50 for half-life
+consumption percent = 50 
+
+
+# Input Files #
+# ---------------------------------------------------------------------- #
+Reactant Frequency file = calculations/reactant.out
+Reactant Single Point file = calculations/reactant_sp.out
+Reactant XYZ file = calculations/reactant.xyz
+
+TS Frequency file = calculations/ts.out
+TS Single Point file = calculations/ts_sp.out
+TS XYZ file = calculations/ts.xyz
+
+Product Frequency file = calculations/product.out
+Product Single Point file = calculations/product_sp.out
+Product XYZ file = calculations/product.xyz
+# ---------------------------------------------------------------------- #
