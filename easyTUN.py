@@ -287,13 +287,25 @@ def S(V_max, E):
     return S
 
 # Read gaussian output for the level of theory and basis set used
-def level_of_theory(file):
+def level_of_theory_freq(file):
     g09_output = open(file, 'r')
     inlines = g09_output.readlines()
     level = "none"
     bs = "none"
     for i in range(0, len(inlines)):
         if inlines[i].strip().find('\\Freq\\') > -1:
+            if len(inlines[i].strip().split("\\")) > 5:
+                level = (inlines[i].strip().split("\\")[4])
+                bs = (inlines[i].strip().split("\\")[5])
+    return level + "/" + bs
+
+def level_of_theory_SP(file):
+    g09_output = open(file, 'r')
+    inlines = g09_output.readlines()
+    level = "none"
+    bs = "none"
+    for i in range(0, len(inlines)):
+        if inlines[i].strip().find('\\SP\\') > -1:
             if len(inlines[i].strip().split("\\")) > 5:
                 level = (inlines[i].strip().split("\\")[4])
                 bs = (inlines[i].strip().split("\\")[5])
@@ -687,13 +699,14 @@ d = D(bee, mu, alpha)
 
 head ='TEMPERATURE      kappa_wigner     kappa_skodje     kappa_eckart     k_wiger             k_skodje              k_eckart             k_uncorrtd \n'
 line = '------------------------------------------------------------------------------------------------------------------------------------------------'
+calculation_info = f'\n# Level of thoery Info. # \nFreqency calculation  : {level_of_theory_freq(TS_freq_path)} \nSP calculation        : {level_of_theory_SP(TS_sp_path)}\n'
 
 if Sym_num_in == 'auto':
-    rxn_info = f'\n# RXN Info. # \n\nDetected Point group  : Reactant [ {reactant_pg} ] / TS [ {TS_pg} ] \nRXN Symmetry Number   : {Sym_num} \nRxn Barrier           : {(G_ts - G_r) * 2625.5e3}  [J/mol]\n\n'
-    output = rxn_info + head + line + '\n'
+    rxn_info = f'\n# RXN Info. # \nDetected Point group  : Reactant [ {reactant_pg} ] / TS [ {TS_pg} ] \nRXN Symmetry Number   : {Sym_num} \nRxn Barrier           : {(G_ts - G_r) * 2625.5e3}  [J/mol]\n\n'
+    output = calculation_info + rxn_info + head + line + '\n'
 else:
     thermodynamics = f'\n# Thermodynamics # \n\n RXN barrier  :  {(G_ts - G_r) * 2625.5e3}  [J/mol]\n\n' 
-    output = thermodynamics + head + line + '\n'
+    output = calculation_info + thermodynamics + head + line + '\n'
 
 for TEMPERATURE in Temp_list:
     raw = ''

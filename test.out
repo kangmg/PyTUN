@@ -1,6 +1,9 @@
 
-# RXN Info. # 
+# Level of thoery Info. # 
+Freqency calculation  : RCCSD-FC/def2SVP 
+SP calculation        : RCCSD-FC/def2SVP
 
+# RXN Info. # 
 Detected Point group  : Reactant [ C1 ] / TS [ C1 ] 
 RXN Symmetry Number   : 1.0 
 Rxn Barrier           : 339456.1985099471  [J/mol]
