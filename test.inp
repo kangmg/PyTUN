@@ -14,16 +14,6 @@ Temperatures list [K] = 300 500 10
 Special Temperatures [K] = auto
 
 
-# consumption time # 
-# ---------------------------------------------------------------------- #
-#   This input is for calculating the decay-time of your reactant.       #
-#   But meaning of decay-time is depends on your reacton system.         #
-#   Plz be aware that 'What is the decay-time for which concentration?   #
-# ---------------------------------------------------------------------- #
-# 50 for half-life
-consumption percent = 50 
-
-
 # Input Files #
 # ---------------------------------------------------------------------- #
 Reactant Frequency file = calculations/reactant.out
